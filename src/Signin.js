@@ -21,6 +21,9 @@ const Signin = () => {
     });
   };
 
+  //const [customerId, setCustomerId] = useState([]);
+  
+
   
 
   const handleSubmit = (e) => {
@@ -29,6 +32,8 @@ const Signin = () => {
    fetch('http://localhost:8081/api/customer/getByEmail/'+emailData)
       .then(response => response.json())
     .then(data =>{
+        localStorage.setItem('customerId', data.id);
+     
      if (formData.email === data.email && formData.password === data.password) {
       setIsLoggedIn(true)
      } else {
